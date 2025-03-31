@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0c0c0c;
+  --foreground: #ffffff;
+  --muted: #7c7c7c;
+  --muted-foreground: #848484;
+  --popover: #1c1c1c;
+  --popover-foreground: #ffffff;
+  --card: #1c1c1c;
+  --card-foreground: #ffffff;
+  --border: #2d2d2d;
+  --input: #2d2d2d;
+  --primary: #ffffff;
+  --primary-foreground: #0c0c0c;
+  --secondary: #2d2d2d;
+  --secondary-foreground: #ffffff;
+  --accent: #2d2d2d;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4747;
+  --destructive-foreground: #ffffff;
+  --ring: #2d2d2d;
+  --radius: 0rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-poppins);
+  }
+  h1, h2 {
+    font-family: var(--font-sixcaps);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .hero-title {
+    font-size: 15rem;
+    line-height: 1;
+  }
+  .section-title {
+    font-size: 8rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+  }
+  .subtitle {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .menu-item {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .menu-item a {
+    font-size: 1.125rem;
+    transition: all 0.3s;
+  }
+  .menu-dropdown {
+    position: absolute;
+    background-color: var(--popover);
+    left: 0;
+    min-width: 200px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 50;
+  }
+  .menu-item:hover .menu-dropdown {
+    opacity: 1;
+    visibility: visible;
+  }
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    transform: translateY(5rem);
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  .portfolio-item:hover .portfolio-item-caption {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .portfolio-item:hover .project-overlay {
+    opacity: 1;
+  }
+}
+
+/* Page Transition Animations */
+.page-transition-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Link hover effect - only for nav menu links */
+nav a,
+footer a:not(.btn),
+.menu-dropdown a {
+  position: relative;
+}
+
+nav a::after,
+footer a:not(.btn)::after,
+.menu-dropdown a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--foreground);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+footer a:not(.btn):hover::after,
+.menu-dropdown a:hover::after {
+  width: 100%;
+}
+
+/* Button hover animations */
+button,
+.btn,
+a.btn,
+a[class*="border"] {
+  transition: all 0.3s ease;
+}
+
+button:hover,
+.btn:hover,
+a.btn:hover,
+a[class*="border"]:hover {
+  transform: translateY(-2px);
+}
+
+/* Portfolio item hover effect */
+.portfolio-item {
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Styles for scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 6px;
+  border: 3px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
