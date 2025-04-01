@@ -45,7 +45,7 @@ const Hero = () => {
           className="flex items-center space-x-2 group"
           scroll={false}
         >
-          <a href="#portfolio" className="subtitle group-hover:text-white transition-colors">Click here or Scroll to Explore</a>
+          <span className="subtitle group-hover:text-white transition-colors">Click here or Scroll to Explore</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
